@@ -256,6 +256,12 @@ input[type="number"] {
       productPrice: 149.90,
       stockCount: 10
     },
+         {
+      imageUrl: "https://images.migrosone.com/sanalmarket/product/03211601/03211601-a57e01-1650x1650.jpg",
+      productName: "Mehmet Efendi 100gr",
+      productPrice: 39.90,
+      stockCount: 10
+    },
      {
       imageUrl: "https://cdn-img.pttavm.com/pimages/592/829/746/c_65dc7db713bec.webp?v=201910111530",
       productName: "Sarıyer Kola 24 lü",
@@ -335,7 +341,7 @@ input[type="number"] {
       stockCount: 2
     }
   ];
-  let selectedProductsText = '';
+ let selectedProductsText = '';
   function generateProductCard(product) {
     const productCard = document.createElement("div");
     productCard.classList.add("product-card");
