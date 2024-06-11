@@ -25,14 +25,15 @@
   <!-- Target -->
   
   
-  <button id="sendSelectedProductsButton" class="btn" data-clipboard-text="">Seçilen Ürünleri Gönder</button>
+  <!--<button id="sendSelectedProductsButton" class="btn" data-clipboard-text="">Seçilen Ürünleri Gönder</button>-->
+
 </div>
 
 <style> 
 * {
     box-sizing: border-box;
 }
-#sendSelectedProductsButton {
+#sendSelectedProductsButton,.whatsapp-btn {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -45,6 +46,8 @@
     width: calc(100% - 20px);
     margin: 10px;
     border-radius: 7px;
+    text-align: center;
+    text-decoration: none;
 }
 body {
   margin: 0;
@@ -380,7 +383,10 @@ input[type="number"] {
       $(e.currentTarget).parents('.product-card').addClass('active');
       addToCartButton.textContent = "Sepetten Çıkar";
     }
-    
+    $('#container a').remove();
+    if($('.product-card.active').length > 0) {
+      $('#container').append(`<a class="btn whatsapp-btn" href="https://wa.me/905546937832?text=${selectedProductsText}" target="_blank">Sepeti Whatsapp ile Paylaş</a>`)
+    }
 
     const selectedProductsList = $('.product-card.active');
     // Seçilen Ürün Bilgilerini Al ve Metne Dönüştür
@@ -395,9 +401,9 @@ input[type="number"] {
         
         let productCountTotal = Number(productPrice.replace(' TL','')) * Number(productCountValue);
         productTotalPrice = productCountTotal + Number(productTotalPrice);
-        selectedProductsText += `${productName}: ${productPrice} > ${productCountValue} Adet > Toplam: ${productCountTotal}  \n`;
+        selectedProductsText += `${productName}: ${productPrice} > ${productCountValue} Adet > Toplam: ${productCountTotal} TL  \n`;
     });
-    selectedProductsText += `\n \n Toplam Fiyat ${productTotalPrice}`;
+    selectedProductsText += `\n \n Toplam Fiyat ${productTotalPrice} TL`;
     $('.btn').attr('data-clipboard-text',selectedProductsText);
 
     });
@@ -431,6 +437,9 @@ input[type="number"] {
   $('input[type="number"]').on('change input keyup paste', function () {
   if (this.max) this.value = Math.min(parseInt(this.max), parseInt(this.value) || 0);
 });
+
+
+
 </script>
 </body>
 </html>
