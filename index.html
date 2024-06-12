@@ -389,10 +389,6 @@ input[type="number"] {
       $(e.currentTarget).parents('.product-card').addClass('active');
       addToCartButton.textContent = "Sepetten Çıkar";
     }
-    $('#container a').remove();
-    if($('.product-card.active').length > 0) {
-      $('#container').append(`<a class="btn whatsapp-btn" href="https://wa.me/905546937832?text=${selectedProductsText}" target="_blank">Sepeti Whatsapp ile Paylaş</a>`)
-    }
 
     const selectedProductsList = $('.product-card.active');
     // Seçilen Ürün Bilgilerini Al ve Metne Dönüştür
@@ -410,6 +406,12 @@ input[type="number"] {
         selectedProductsText += `${productName}: ${productPrice} > ${productCountValue} Adet > Toplam: ${productCountTotal} TL  \n`;
     });
     selectedProductsText += `\n \n Toplam Fiyat ${productTotalPrice} TL`;
+
+    $('#container a').remove();
+    if($('.product-card.active').length > 0) {
+      $('#container').append(`<a class="btn whatsapp-btn" href="https://wa.me/905546937832?text=${selectedProductsText}" target="_blank">Sepeti Whatsapp ile Paylaş</a>`)
+    }
+    
     $('.btn').attr('data-clipboard-text',selectedProductsText);
 
     });
