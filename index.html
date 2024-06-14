@@ -403,9 +403,9 @@ input[type="number"] {
         
         let productCountTotal = Number(productPrice.replace(' TL','')) * Number(productCountValue);
         productTotalPrice = productCountTotal + Number(productTotalPrice);
-        selectedProductsText += `${productName}: ${productPrice} > ${productCountValue} Adet > Toplam: ${productCountTotal} TL  \n`;
+        selectedProductsText += `*${productName}:* ${productPrice} > ${productCountValue} Adet > Toplam: ${productCountTotal} TL  \n \%0A\%0A`;
     });
-    selectedProductsText += `\n \n Toplam Fiyat ${productTotalPrice} TL`;
+    selectedProductsText += `*Toplam Fiyat:* ${productTotalPrice} TL`;
 
     $('#container a').remove();
     if($('.product-card.active').length > 0) {
