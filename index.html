@@ -20,7 +20,12 @@
 
 
 <div id="container">
-  <div class="product-date">11-24 Haziran</div>
+  <!--<div class="product-date">11-24 Haziran</div>-->
+  <div class="tabs">
+    <span class="tabs_link js-tabs-all active">Tüm Ürünler</span>
+    <span class="tabs_link js-tabs-link" data-multiple="0">Tekli Ürünler</span>
+    <span class="tabs_link js-tabs-link" data-multiple="1">Toptan Ürünler</span>
+  </div>
   <div id="product-container"></div>
   <!-- Target -->
   
@@ -76,6 +81,7 @@ body {
     justify-content: center;
     margin: 0 auto;
     padding: 20px;
+    padding-bottom: 100px;
 }
 .product-card {
     display: flex;
@@ -84,7 +90,7 @@ body {
     flex-direction: column;
     border: 1px solid #000;
     padding: 20px;
-    width: calc(25% - 57px);
+    width: calc(25% - 29px);
     line-height: normal;
     gap: 5px;
     background: #fff;
@@ -111,6 +117,7 @@ body {
 .product-card .product-name {
   font-size: 25px;
   min-height: 60px;
+  text-align: center;
 }
 .product-card .product-price {
   font-size: 24px;
@@ -135,6 +142,7 @@ button.add-to-card {
     padding: 15px;
     margin: 10px 0;
     font-size: 18px;
+    border-radius: 10px;
 }
 input[type="number"] {
     font-size: 19px;
@@ -142,310 +150,493 @@ input[type="number"] {
     height: 33px;
     padding: 8px;
 }
+.hidden {
+  display: none;
+}
+.tabs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 10px 48px;
+     @media only screen and (max-width: 992px) {
+      padding: 10px;
+    }
+}
 
+span.tabs_link {
+    width: 100%;
+    text-align: center;
+    border: 1px solid #000;
+    padding: 20px;
+    background: #f39353;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+span.tabs_link.active {
+    background: #f60;
+}
 </style>
 
 <script>
-  new ClipboardJS('.btn');
-  const products = [
-    {
-      imageUrl: "https://sariyericecek.com.tr/public/images/products/sariyer-kola-330-ML.webp",
-      productName: "Sarıyer Kola",
-      productPrice: 15.00,
-      stockCount: 200
-    },
-    {
-      imageUrl: "https://www.mismarsanalmarket.com/UserFiles/Fotograflar/thumbs/16925-sariyer-portakal-330-ml-tnk-resim-2024-01-06-151216579.png",
-      productName: "Sarıyer Portakal",
-      productPrice: 15.00,
-      stockCount: 200
-    },
-    {
-      imageUrl: "https://www.etietieti.com/images/Products/topkek-findikli-kakaolu_55_psb.png",
-      productName: "Topkek",
-      productPrice: 6.50,
-      stockCount: 100
-    },
-    {
-      imageUrl: "https://cdn.akakce.com/z/nigde-gazozu/nigde-gazozu-250-ml-24-adet.jpg",
-      productName: "Niğde Gazozu",
-      productPrice: 15.00,
-      stockCount: 12
-    },
-    {
-      imageUrl: "https://halitlar.com/aa/lib/elfinder/files/ulker/ulker-biskrem-large-size-roll-150-gr/ulker-biskrem-large-size-roll-150-gr1604013692_1920.jpg",
-      productName: "Biskrem",
-      productPrice: 20.00,
-      stockCount: 17
-    },
-    {
-      imageUrl: "https://static.happycenter.com.tr/Uploads/kg-icec-alasu-ssd-003-EEFF4-500x500.png",
-      productName: "Sarıkız Soda",
-      productPrice: 7.50,
-      stockCount: 48
-    },
-    {
-      imageUrl: "https://www.kupagida.com/wp-content/uploads/2020/02/Aroma-Kar%C4%B1%C5%9F%C4%B1k-Tropical-Meyve-Suyu.jpg",
-      productName: "Aroma Karışık Meyvesuyu",
-      productPrice: 10.00,
-      stockCount: 50
-    },
-    {
-      imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2000.0010-1.png",
-      productName: "2 si 1 arada",
-      productPrice: 5.00,
-      stockCount: 500
-    },
-     {
-      imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2010.0019-1.png",
-      productName: "3 ü 1 arada",
-      productPrice: 5.00,
-      stockCount: 75
-    },
-    {
-      imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/330af_Sicak_Cikolata_Kutu_24lu_.jpg",
-      productName: "Sıcak Çikolata",
-      productPrice: 7.5,
-      stockCount: 75
-    },
-    {
-      imageUrl: "https://cdn.akakce.com/z/kahve-dunyasi/kahve-dunyasi-gofrik-33-gr-sutlu.jpg",
-      productName: "Gofrik",
-      productPrice: 15.00,
-      stockCount: 240
-    },
-    {
-      imageUrl: "https://images.migrosone.com/sanalmarket/product/07120219/07120219-68be82-1650x1650.jpg",
-      productName: "First Sakız",
-      productPrice: 19.90,
-      stockCount: 10
-    },
-    {
-      imageUrl: "https://images.migrosone.com/sanalmarket/product/08054812/08054812-5f7166-1650x1650.jpg",
-      productName: "Dimes Karışık 1lt",
-      productPrice: 35.00,
-      stockCount: 8
-    },
-    {
-      imageUrl: "https://cdn.cimri.io/market/260x260/caykur-tiryaki-1-kg-cay-_1290065.jpg",
-      productName: "Tiryaki Çay 1kg",
-      productPrice: 154.90,
-      stockCount: 3
-    },
+    new ClipboardJS('.btn');
+     const products = [
       {
-      imageUrl: "https://caykursatis.com/tiryaki-cayi-500gr-siyah-cay-caykur-siyah-cay-caykur-siyah-cay-127-96-B.jpg",
-      productName: "Tiryaki Çay 500Gr",
-      productPrice: 84.90,
-      stockCount: 10
-    },
-     {
-      imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2010.0019-1.png",
-      productName: "Kahve dünyası 3in1 40lı paket",
-      productPrice: 149.90,
-      stockCount: 17
-    },
-     {
-      imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2000.0010-1.png",
-      productName: "Kahve dünyası 2in1 40lı paket",
-      productPrice: 149.90,
-      stockCount: 17
-    },
-       {
-      imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/330af_Sicak_Cikolata_Kutu_24lu_.jpg",
-      productName: "Kahve dünyası 2in1 24lü paket",
-      productPrice: 149.90,
-      stockCount: 10
-    },
-         {
-      imageUrl: "https://images.migrosone.com/sanalmarket/product/03211601/03211601-a57e01-1650x1650.jpg",
-      productName: "Mehmet Efendi 100gr",
-      productPrice: 39.90,
-      stockCount: 10
-    },
-     {
-      imageUrl: "https://cdn-img.pttavm.com/pimages/592/829/746/c_65dc7db713bec.webp?v=201910111530",
-      productName: "Sarıyer Kola 24 lü",
-      productPrice: 269.90,
-      stockCount: 5
-    },
+        imageUrl: "https://sariyericecek.com.tr/public/images/products/sariyer-kola-330-ML.webp",
+        productName: "Sarıyer Kola",
+        productPrice: 17.00,
+        stockCount: 24,
+        multiple: 0
+      },
+          {
+        imageUrl: "https://sariyericecek.com.tr/public/images/products/sariyer-kola-330-ML.webp",
+        productName: "Sarıyer Kola 24 lü",
+        productPrice: 360.00,
+        stockCount: 1,
+        multiple: 1
+      },
       {
-      imageUrl: "https://iis-akakce.akamaized.net/p.x?%2F%2Fcdn.dsmcdn.com%2Fty1260%2Fproduct%2Fmedia%2Fimages%2Fprod%2FSPM%2FPIM%2F20240417%2F13%2F9a4d9742-d870-335f-b356-32ac2c17bf41%2F1_org_zoom.jpg",
-      productName: "Sarıyer Portakal 24 lü",
-      productPrice: 269.90,
-      stockCount: 10
-    },
-        {
-      imageUrl: "https://www.sarfmarket.com.tr/sarikiz-maden-suyu-24lu-fiyati-su-soda-sarikiz-setstok-17557-18-B.jpg",
-      productName: "Sarıkız Soda 6 lı",
-      productPrice: 34.90,
-      stockCount: 10
-    },
-         {
-      imageUrl: "https://www.offiezy.com/image/cachewebp/data/kizilay-soda-6li-500x500.webp",
-      productName: "Kızılay Soda 6 lı",
-      productPrice: 34.90,
-      stockCount: 10
-    },
-    {
-      imageUrl: "https://cdn.akakce.com/z/beypazari/beypazari-200-ml-6-li-paket.jpg",
-      productName: "Beypazarı Soda 6 lı",
-      productPrice: 34.90,
-      stockCount: 10
-    },
-    {
-      imageUrl: "https://cdnsta.avansas.com/mnresize/900/-/urun/67102/arko-tiras-kopugu-cool-200-ml-zoom-2.jpg",
-      productName: "Arko Traş Köpüğü",
-      productPrice: 99.90,
-      stockCount: 2
-    },
-    {
-      imageUrl: "https://images.migrosone.com/sanalmarket/product/35038193/35038193-8084a4-1650x1650.jpg",
-      productName: "Blade Deodorant",
-      productPrice: 99.90,
-      stockCount: 2
-    },
-    {
-      imageUrl: "https://ideacdn.net/idea/el/24/myassets/products/512/gillette-blue-3-tekli-tiras-bicagi.png?revision=1697143329",
-      productName: "Blue 3 Traş Bıçağı",
-      productPrice: 25.00,
-      stockCount: 2
-    },
-    {
-      imageUrl: "https://productimages.hepsiburada.net/s/46/375-375/10860166873138.jpg",
-      productName: "Flaş Çakmak Gazı",
-      productPrice: 35.00,
-      stockCount: 2
-    },
-    {
-      imageUrl: "https://images.migrosone.com/hemen/product/30733252/30733252-a6fb1a-1650x1650.jpg",
-      productName: "Asperox Sarıgüç",
-      productPrice: 70.00,
-      stockCount: 2
-    },
-    {
-      imageUrl: "https://cdn.akakce.com/z/asperox/asperox-ultra-kirec-pas-sokucu-mavi-guc-1l.jpg",
-      productName: "Asperox Mavi Güç",
-      productPrice: 70.00,
-      stockCount: 2
-    },
-    {
-      imageUrl: "https://productimages.hepsiburada.net/s/468/375/110000506427164.jpg/format:webp",
-      productName: "Oral White Diş İpi",
-      productPrice: 79.90,
-      stockCount: 3
-    },
-    {
-      imageUrl: "https://www.bebekhouse.com/UserFiles/ProductImages/0/23mslpy21601505/orj/sleepy-easy-clean-yuzey-temizlik-havlusu-100lu-213551.jpeg",
-      productName: "Sleppy 100lü",
-      productPrice: 79.90,
-      stockCount: 2
-    }
-  ];
- let selectedProductsText = '';
-  function generateProductCard(product) {
-    const productCard = document.createElement("div");
-    productCard.classList.add("product-card");
+        imageUrl: "https://www.mismarsanalmarket.com/UserFiles/Fotograflar/thumbs/16925-sariyer-portakal-330-ml-tnk-resim-2024-01-06-151216579.png",
+        productName: "Sarıyer Portakal",
+        productPrice: 17.00,
+        stockCount: 24,
+        multiple: 0
+      },
+          {
+        imageUrl: "https://www.mismarsanalmarket.com/UserFiles/Fotograflar/thumbs/16925-sariyer-portakal-330-ml-tnk-resim-2024-01-06-151216579.png",
+        productName: "Sarıyer Portakal 24 lü",
+        productPrice: 360.00,
+        stockCount: 1,
+        multiple: 1
+      },
+                     {
+        imageUrl: "https://cdn.dsmcdn.com/mnresize/400/-/ty258/product/media/images/20211129/14/1149174/325199380/1/1_org.jpg",
+        productName: "Fuska 0.5 Su 12Li",
+        productPrice: 35,
+        stockCount: 6,
+        multiple: 1
+      },
+      {
+        imageUrl: "https://www.enginpeynircilik.com/image/cache/hakan/ODPB2609-900x900.PNG",
+        productName: "Tiryaki Çay 500Gr",
+        productPrice: 85.00,
+        stockCount: 14,
+        multiple: 0
+      },
+          {
+        imageUrl: "https://images.deliveryhero.io/image/product-information-management/6266fb776a5c51b0f9f6cd00.jpeg?height=480",
+        productName: "Tiryaki Çay 1Kg",
+        productPrice: 157.50,
+        stockCount: 14,
+        multiple: 0
+      },
+              {
+        imageUrl: "https://productimages.hepsiburada.net/s/52/375-375/11119164227634.jpg",
+        productName: "Doğuş Filiz Çay 1Kg",
+        productPrice: 145.00,
+        stockCount: 14,
+        multiple: 0
+      },
+      {
+        imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2010.0019-1.png",
+        productName: "3 ü 1 arada",
+        productPrice: 5.00,
+        stockCount: 120,
+        multiple: 0
+      },
+      {
+        imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2010.0019-1.png",
+        productName: "3 ü 1 arada 40lı kutu",
+        productPrice: 150.00,
+        stockCount: 3,
+        multiple: 1
+      },
+      {
+        imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2000.0010-1.png",
+        productName: "2 si 1 arada",
+        productPrice: 5.00,
+        stockCount: 720,
+        multiple: 0
+      },
+          {
+        imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2000.0010-1.png",
+        productName: "2 si 1 arada 40lı kutu",
+        productPrice: 150.00,
+        stockCount: 18,
+        multiple: 1
+      },
+          {
+        imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/330af_Sicak_Cikolata_Kutu_24lu_.jpg",
+        productName: "Sıcak Çikolata",
+        productPrice: 7.5,
+        stockCount: 120
+      },
+             {
+        imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/330af_Sicak_Cikolata_Kutu_24lu_.jpg",
+        productName: "Sıcak Çikolata",
+        productPrice: 140,
+        stockCount: 5,
+        multiple: 1
+      },
+          {
+        imageUrl: "https://static.ticimax.cloud/42615/uploads/urunresimleri/buyuk/aroma-meyve-suyu-tropical-seftali-200--3424e2.jpg",
+        productName: "Aroma Şeftali 200Ml",
+        productPrice: 8.00,
+        stockCount: 24,
+        multiple: 0
+      },
+          {
+        imageUrl: "https://cdn.dsmcdn.com/ty181/product/media/images/20210923/13/135737408/248987830/1/1_org_zoom.jpg",
+        productName: "Meysu Şeftali 200Ml",
+        productPrice: 8.00,
+        stockCount: 30,
+        multiple: 0
+      },
+              {
+        imageUrl: "https://www.guvendikmarket.com/wp-content/uploads/2023/03/198-1.jpg",
+        productName: "Meysu Karışık 200Ml",
+        productPrice: 8.00,
+        stockCount: 21,
+        multiple: 0
+      },
+                  {
+        imageUrl: "https://cdn.dsmcdn.com/ty522/product/media/images/20220905/15/169418577/559324628/1/1_org_zoom.jpg",
+        productName: "Meysu Karışık 200Ml",
+        productPrice: 5.00,
+        stockCount: 50,
+        multiple: 0
+      },
+      {
+        imageUrl: "https://cdn.akakce.com/z/nigde-gazozu/nigde-gazozu-250-ml-24-adet.jpg",
+        productName: "Niğde Gazozu",
+        productPrice: 15.00,
+        stockCount: 30,
+        multiple: 0
+      },
+          {
+        imageUrl: "https://cdn.akakce.com/z/nigde-gazozu/nigde-gazozu-250-ml-24-adet.jpg",
+        productName: "Niğde Gazozu 24lü",
+        productPrice: 280.00,
+        stockCount: 1,
+        multiple: 1
+      },
+          {
+        imageUrl: "https://cdn.dsmcdn.com/mnresize/500/-/ty1354/product/media/images/prod/QC/20240609/02/3da39f82-7d57-354a-90d1-629ebe7a061a/1_org.jpg",
+        productName: "Aroma Şeftali Adet",
+        productPrice: 15.00,
+        stockCount: 24,
+        multiple: 0
+      },
+      {
+        imageUrl: "https://cdn.dsmcdn.com/mnresize/500/-/ty1354/product/media/images/prod/QC/20240609/02/3da39f82-7d57-354a-90d1-629ebe7a061a/1_org.jpg",
+        productName: "Aroma Şeftali 24lü",
+        productPrice: 280.00,
+        stockCount: 1,
+        multiple: 1
+      },
+      {
+        imageUrl: "https://cdn.dsmcdn.com/ty920/product/media/images/20230530/12/371302271/958158209/1/1_org_zoom.jpg",
+        productName: "Kınık Gazoz Adet",
+        productPrice: 10,
+        stockCount: 384,
+        multiple: 0
+      },
+          {
+        imageUrl: "https://cdn.dsmcdn.com/ty920/product/media/images/20230530/12/371302271/958158209/1/1_org_zoom.jpg",
+        productName: "Kınık Gazoz 24lü ",
+        productPrice: 200,
+        stockCount: 16,
+        multiple: 1
+      },
+      {
+        imageUrl: "https://cdn.akakce.com/z/kahve-dunyasi/kahve-dunyasi-gofrik-33-gr-sutlu.jpg",
+        productName: "Gofrik Adet",
+        productPrice: 20.00,
+        stockCount: 120,
+        multiple: 0
+      },
+      {
+        imageUrl: "https://cdn.akakce.com/z/kahve-dunyasi/kahve-dunyasi-gofrik-33-gr-sutlu.jpg",
+        productName: "Gofrik 24lü",
+        productPrice: 400.00,
+        stockCount: 5,
+        multiple: 1
+      },
+          {
+        imageUrl: "https://www.guvendikmarket.com/wp-content/uploads/2020/08/tadelle-findik-dolgulu-30.png",
+        productName: "Tadelle 30Gr",
+        productPrice: 15.00,
+        stockCount: 26,
+        multiple: 0
+      },
+              {
+        imageUrl: "https://www.guvendikmarket.com/wp-content/uploads/2021/06/karam-gurme.png",
+        productName: "Eti Karam",
+        productPrice: 15.00,
+        stockCount: 18,
+        multiple: 0
+      },
+      {
+        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-qIgjTXj7fFjb17-kAV_89BOa1hWXxjtHdQ&s",
+        productName: "Sarıkız Soda ",
+        productPrice: 7.50,
+        stockCount: 26,
+        multiple: 0
+      },
+      {
+        imageUrl: "https://ardenmarket.com.tr/media/catalog/product/cache/0b154ba1d9ffbc98998b9163ce10b49b/b/e/beypazari-soda-200ml.jpg",
+        productName: "Beypazarı Soda",
+        productPrice: 7.50,
+        stockCount: 24,
+        multiple: 0
+      },
+      {
+        imageUrl: "https://www.kinikmadensuyu.com.tr/assets/img/kurumsal/kurumsal-foto.png",
+        productName: "Kınık Soda",
+        productPrice: 7.50,
+        stockCount: 90,
+        multiple: 0
+      },
+          {
+        imageUrl: "https://onlineapi.cagri.com/api/v1/pub/products/img/47387/1/300",
+        productName: "Kızılay Soda Afyon",
+        productPrice: 7.50,
+        stockCount: 13,
+        multiple: 0
+      },
+          {
+        imageUrl: "https://www.mehmetefendi.com/images/content/jpg/turk-kahvesi-100g1.jpg",
+        productName: "Mehmet Efendi Türk Kahvesi",
+        productPrice: 40.00,
+        stockCount: 7,
+        multiple: 0
+      },
+              {
+        imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/53353_Orta_Kavrulmus_Turk_Kahvesi_100g.jpg",
+        productName: "Kahve Dünyası Türk Kahvesi",
+        productPrice: 35.00,
+        stockCount: 5,
+        multiple: 0
+      },
+      {
+        imageUrl: "https://images.migrosone.com/sanalmarket/product/35038193/35038193-8084a4-1650x1650.jpg",
+        productName: "Blade Deodorant",
+        productPrice: 100.00,
+        stockCount: 1,
+        multiple: 0
+      },
+          {
+        imageUrl: "https://www.watsons.com.tr/medias/sys_master/prd-images/hd8/h72/8900910383134/prd-front-126328_365x385/prd-front-126328-365x385.jpeg",
+        productName: "Blade Deodorant",
+        productPrice: 135.00,
+        stockCount: 5,
+        multiple: 0
+      },
+      {
+        imageUrl: "https://ideacdn.net/idea/el/24/myassets/products/512/gillette-blue-3-tekli-tiras-bicagi.png?revision=1697143329",
+        productName: "Blue 3 Traş Bıçağı",
+        productPrice: 25.00,
+        stockCount: 10,
+        multiple: 0
+      },
+      {
+        imageUrl: "https://productimages.hepsiburada.net/s/46/375-375/10860166873138.jpg",
+        productName: "Flaş Çakmak Gazı",
+        productPrice: 35.00,
+        stockCount: 8,
+        multiple: 0
+      },
+          {
+        imageUrl: "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20240101/02/2eb47205-623a-3516-bd92-b5e94052caa0/1_org_zoom.jpg",
+        productName: "Atc Led Ampul 10w",
+        productPrice: 35.00,
+        stockCount: 4,
+        multiple: 0
+      },
+      {
+        imageUrl: "https://images.migrosone.com/hemen/product/30733252/30733252-a6fb1a-1650x1650.jpg",
+        productName: "Asperox Sarıgüç",
+        productPrice: 70.00,
+        stockCount: 2,
+        multiple: 0
+      },
+      {
+        imageUrl: "https://cdn.akakce.com/z/asperox/asperox-ultra-kirec-pas-sokucu-mavi-guc-1l.jpg",
+        productName: "Asperox Mavi Güç",
+        productPrice: 70.00,
+        stockCount: 2,
+        multiple: 0
+      },
+          {
+        imageUrl: "https://www.drogeria-vmd.com/imagegen.php?autoimage=2001875",
+        productName: "Freshmaker Islak Mendil",
+        productPrice: 25.00,
+        stockCount: 3,
+        multiple: 0
+      },
+              {
+        imageUrl: "https://www.recete.com/sleepy-rose-islak-bebek-mendili-90-adet-bebek-islak-mendilleri-sleepy-4013-40-B.jpg",
+        productName: "Sleepy Rose Islak Mendil",
+        productPrice: 25.00,
+        stockCount: 1,
+        multiple: 0
+      },
+      {
+        imageUrl: "https://www.bebekhouse.com/UserFiles/ProductImages/0/23mslpy21601505/orj/sleepy-easy-clean-yuzey-temizlik-havlusu-100lu-213551.jpeg",
+        productName: "Sleppy 100lü",
+        productPrice: 80.00,
+        stockCount: 12,
+        multiple: 0
+      }
+    ];
+   let selectedProductsText = '';
+    function generateProductCard(product) {
+      const productCard = document.createElement("div");
+      productCard.classList.add("product-card");
+      productCard.setAttribute('data-multiple' , product.multiple)
 
-    const productImage = document.createElement("img");
-    productImage.src = product.imageUrl;
-    productCard.appendChild(productImage);
+      const productImage = document.createElement("img");
+      productImage.src = product.imageUrl;
+      productCard.appendChild(productImage);
 
-    const productName = document.createElement("span");
-    productName.classList.add("product-name");
-    productName.textContent = product.productName;
-    productCard.appendChild(productName);
+      const productName = document.createElement("span");
+      productName.classList.add("product-name");
+      productName.textContent = product.productName;
+      productCard.appendChild(productName);
 
-    const productPrice = document.createElement("span");
-    productPrice.classList.add("product-price");
-    productPrice.textContent = `${product.productPrice} TL`;
-    productCard.appendChild(productPrice);
+      const productPrice = document.createElement("span");
+      productPrice.classList.add("product-price");
+      productPrice.textContent = `${product.productPrice} TL`;
+      productCard.appendChild(productPrice);
 
-    const stockCount = document.createElement("span");
-    stockCount.classList.add("product-and");
-    stockCount.innerHTML = `Son <span class="stock-number">${product.stockCount}</span> Ürün`
-    productCard.appendChild(stockCount);
+      const stockCount = document.createElement("span");
+      stockCount.classList.add("product-and");
+      stockCount.innerHTML = `Son <span class="stock-number">${product.stockCount}</span> Ürün`
+      productCard.appendChild(stockCount);
 
 
-    // Miktar Alanı Ekleme
-    const quantityInput = document.createElement("input");
-    stockCount.classList.add("product-stock");
-    quantityInput.type = "number";
-    quantityInput.min = "1";
-    quantityInput.max = product.stockCount;
-    quantityInput.value = 1; // Varsayılan miktarı 1 olarak ayarla
-    productCard.appendChild(quantityInput);
+      // Miktar Alanı Ekleme
+      const quantityInput = document.createElement("input");
+      stockCount.classList.add("product-stock");
+      quantityInput.type = "number";
+      quantityInput.min = "1";
+      quantityInput.max = product.stockCount;
+      quantityInput.value = 1; // Varsayılan miktarı 1 olarak ayarla
+      productCard.appendChild(quantityInput);
 
-    // Sepete Ekle Butonu Ekleme
-    const addToCartButton = document.createElement("button");
-    addToCartButton.classList.add("add-to-card");
-    addToCartButton.textContent = "Sepete Ekle";
-    addToCartButton.addEventListener("click", (e) => {
-    const quantity = parseInt(quantityInput.value);
-
-    if($(e.currentTarget).parents('.product-card').hasClass('active')) {
-      $(e.currentTarget).parents('.product-card').removeClass('active');
+      // Sepete Ekle Butonu Ekleme
+      const addToCartButton = document.createElement("button");
+      addToCartButton.classList.add("add-to-card");
       addToCartButton.textContent = "Sepete Ekle";
-    }else {
-      $(e.currentTarget).parents('.product-card').addClass('active');
-      addToCartButton.textContent = "Sepetten Çıkar";
+      addToCartButton.addEventListener("click", (e) => {
+      const quantity = parseInt(quantityInput.value);
+
+      if($(e.currentTarget).parents('.product-card').hasClass('active')) {
+        $(e.currentTarget).parents('.product-card').removeClass('active');
+        addToCartButton.textContent = "Sepete Ekle";
+      }else {
+        $(e.currentTarget).parents('.product-card').addClass('active');
+        addToCartButton.textContent = "Sepetten Çıkar";
+      }
+
+      const selectedProductsList = $('.product-card.active');
+      // Seçilen Ürün Bilgilerini Al ve Metne Dönüştür
+      selectedProductsText = '';
+      let productTotalPrice = 0;
+      let productCountTotal = 0;
+      $(selectedProductsList).each(function(i,v) {
+          const productName = $(v).find('.product-name').text();
+          const productPrice = $(v).find('.product-price').text();
+          const productStock = $(v).find('.stock-number').val();
+          const productCountValue = $(v).find('input[type="number"]').val();
+          
+          let productCountTotal = Number(productPrice.replace(' TL','')) * Number(productCountValue);
+          productTotalPrice = productCountTotal + Number(productTotalPrice);
+          selectedProductsText += `*${productName}:* ${productPrice} > ${productCountValue} Adet > Toplam: ${productCountTotal} TL  \n \%0A\%0A`;
+      });
+      selectedProductsText += `*Toplam Fiyat:* ${productTotalPrice} TL`;
+
+      $('#container a').remove();
+      if($('.product-card.active').length > 0) {
+        $('#container').append(`<a class="btn whatsapp-btn" href="https://wa.me/905546937832?text=${selectedProductsText}" target="_blank">Sepeti Whatsapp ile Paylaş</a>`)
+      }
+      
+      $('.btn').attr('data-clipboard-text',selectedProductsText);
+
+      });
+      productCard.appendChild(addToCartButton);
+
+      return productCard;
     }
 
-    const selectedProductsList = $('.product-card.active');
-    // Seçilen Ürün Bilgilerini Al ve Metne Dönüştür
-    selectedProductsText = '';
-    let productTotalPrice = 0;
-    let productCountTotal = 0;
-    $(selectedProductsList).each(function(i,v) {
-        const productName = $(v).find('.product-name').text();
-        const productPrice = $(v).find('.product-price').text();
-        const productStock = $(v).find('.stock-number').val();
-        const productCountValue = $(v).find('input[type="number"]').val();
-        
-        let productCountTotal = Number(productPrice.replace(' TL','')) * Number(productCountValue);
-        productTotalPrice = productCountTotal + Number(productTotalPrice);
-        selectedProductsText += `*${productName}:* ${productPrice} > ${productCountValue} Adet > Toplam: ${productCountTotal} TL  \n \%0A\%0A`;
+    const productList = document.getElementById("product-container");
+
+    for (const product of products) {
+      const productCard = generateProductCard(product);
+      productList.appendChild(productCard);
+    }
+
+
+    const tabsLink = document.querySelectorAll('.js-tabs-link');
+
+    tabsLink.forEach(link => {
+      link.addEventListener('click', (event) => {
+        const multipleProduct = event.currentTarget.dataset.multiple;
+        const productCards = document.querySelectorAll('.product-card');
+        $('.tabs_link').removeClass("active");
+        $(event.currentTarget).addClass("active");
+        productCards.forEach(card => {
+          card.style.display = 'none';
+          if (card.dataset.multiple === multipleProduct) {
+            card.style.display = 'flex';
+          }
+        });
+      });
     });
-    selectedProductsText += `*Toplam Fiyat:* ${productTotalPrice} TL`;
 
-    $('#container a').remove();
-    if($('.product-card.active').length > 0) {
-      $('#container').append(`<a class="btn whatsapp-btn" href="https://wa.me/905546937832?text=${selectedProductsText}" target="_blank">Sepeti Whatsapp ile Paylaş</a>`)
-    }
-    
-    $('.btn').attr('data-clipboard-text',selectedProductsText);
 
+
+     const tabsLinkAll = document.querySelectorAll('.js-tabs-all');
+
+    tabsLinkAll.forEach(link => {
+      link.addEventListener('click', (event) => {
+        const productCards = document.querySelectorAll('.product-card');
+         $('.tabs_link').removeClass("active");
+        $(event.currentTarget).addClass("active");
+        productCards.forEach(card => {
+         card.style.display = 'flex';
+        });
+      });
     });
-    productCard.appendChild(addToCartButton);
 
-    return productCard;
-  }
+  
 
-  const productList = document.getElementById("product-container");
+    // Seçilen Ürünleri Gönderme Butonu İşlevselliği
+    const sendSelectedProductsButton = document.getElementById('sendSelectedProductsButton');
+    sendSelectedProductsButton.addEventListener('click', () => {
+      const selectedProductsList = $('.product-card.active');
+      if (selectedProductsList && selectedProductsList.length) {
+        navigator.clipboard.writeText(selectedProductsText);
+        alert('Seçilen ürünler kopyalandı göndermek istediğiniz kişinin ekranına yapıştırın');
+        // Seçilen ürünlerin listesini temizleme
+        selectedProductsList.innerHTML = '';
+      } else {
+        alert('Seçilmiş ürün bulunamadı!');
+      }
+    });
 
-  for (const product of products) {
-    const productCard = generateProductCard(product);
-    productList.appendChild(productCard);
-  }
+    $('input[type="number"]').on('change input keyup paste', function () {
+    if (this.max) this.value = Math.min(parseInt(this.max), parseInt(this.value) || 0);
 
 
-  // Seçilen Ürünleri Gönderme Butonu İşlevselliği
-  const sendSelectedProductsButton = document.getElementById('sendSelectedProductsButton');
-  sendSelectedProductsButton.addEventListener('click', () => {
-    const selectedProductsList = $('.product-card.active');
-    if (selectedProductsList && selectedProductsList.length) {
-      navigator.clipboard.writeText(selectedProductsText);
-      alert('Seçilen ürünler kopyalandı göndermek istediğiniz kişinin ekranına yapıştırın');
-      // Seçilen ürünlerin listesini temizleme
-      selectedProductsList.innerHTML = '';
-    } else {
-      alert('Seçilmiş ürün bulunamadı!');
-    }
   });
 
-  $('input[type="number"]').on('change input keyup paste', function () {
-  if (this.max) this.value = Math.min(parseInt(this.max), parseInt(this.value) || 0);
-});
 
+  
 
 
 </script>
