@@ -185,314 +185,294 @@ span.tabs_link.active {
 <script>
     new ClipboardJS('.btn');
      const products = [
-      {
-        imageUrl: "https://sariyericecek.com.tr/public/images/products/sariyer-kola-330-ML.webp",
-        productName: "Sarıyer Kola",
-        productPrice: 17.00,
-        stockCount: 24,
-        multiple: 0
-      },
-          {
-        imageUrl: "https://sariyericecek.com.tr/public/images/products/sariyer-kola-330-ML.webp",
-        productName: "Sarıyer Kola 24 lü",
-        productPrice: 360.00,
-        stockCount: 1,
-        multiple: 1
-      },
-      {
-        imageUrl: "https://www.mismarsanalmarket.com/UserFiles/Fotograflar/thumbs/16925-sariyer-portakal-330-ml-tnk-resim-2024-01-06-151216579.png",
-        productName: "Sarıyer Portakal",
-        productPrice: 17.00,
-        stockCount: 24,
-        multiple: 0
-      },
-          {
-        imageUrl: "https://www.mismarsanalmarket.com/UserFiles/Fotograflar/thumbs/16925-sariyer-portakal-330-ml-tnk-resim-2024-01-06-151216579.png",
-        productName: "Sarıyer Portakal 24 lü",
-        productPrice: 360.00,
-        stockCount: 1,
-        multiple: 1
-      },
-                     {
-        imageUrl: "https://cdn.dsmcdn.com/mnresize/400/-/ty258/product/media/images/20211129/14/1149174/325199380/1/1_org.jpg",
-        productName: "Fuska 0.5 Su 12Li",
-        productPrice: 35,
-        stockCount: 6,
-        multiple: 1
-      },
-      {
-        imageUrl: "https://www.enginpeynircilik.com/image/cache/hakan/ODPB2609-900x900.PNG",
-        productName: "Tiryaki Çay 500Gr",
-        productPrice: 85.00,
-        stockCount: 14,
-        multiple: 0
-      },
-          {
-        imageUrl: "https://images.deliveryhero.io/image/product-information-management/6266fb776a5c51b0f9f6cd00.jpeg?height=480",
-        productName: "Tiryaki Çay 1Kg",
-        productPrice: 157.50,
-        stockCount: 14,
-        multiple: 0
-      },
-              {
-        imageUrl: "https://productimages.hepsiburada.net/s/52/375-375/11119164227634.jpg",
-        productName: "Doğuş Filiz Çay 1Kg",
-        productPrice: 145.00,
-        stockCount: 14,
-        multiple: 0
-      },
-      {
-        imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2010.0019-1.png",
-        productName: "3 ü 1 arada",
-        productPrice: 5.00,
-        stockCount: 120,
-        multiple: 0
-      },
-      {
-        imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2010.0019-1.png",
-        productName: "3 ü 1 arada 40lı kutu",
-        productPrice: 150.00,
-        stockCount: 3,
-        multiple: 1
-      },
-      {
-        imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2000.0010-1.png",
-        productName: "2 si 1 arada",
-        productPrice: 5.00,
-        stockCount: 720,
-        multiple: 0
-      },
-          {
-        imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2000.0010-1.png",
-        productName: "2 si 1 arada 40lı kutu",
-        productPrice: 150.00,
-        stockCount: 18,
-        multiple: 1
-      },
-          {
-        imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/330af_Sicak_Cikolata_Kutu_24lu_.jpg",
-        productName: "Sıcak Çikolata",
-        productPrice: 7.5,
-        stockCount: 120
-      },
-             {
-        imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/330af_Sicak_Cikolata_Kutu_24lu_.jpg",
-        productName: "Sıcak Çikolata 24'lü",
-        productPrice: 140,
-        stockCount: 5,
-        multiple: 1
-      },
-          {
-        imageUrl: "https://static.ticimax.cloud/42615/uploads/urunresimleri/buyuk/aroma-meyve-suyu-tropical-seftali-200--3424e2.jpg",
-        productName: "Aroma Şeftali 200Ml",
-        productPrice: 8.00,
-        stockCount: 24,
-        multiple: 0
-      },
-          {
-        imageUrl: "https://cdn.dsmcdn.com/ty181/product/media/images/20210923/13/135737408/248987830/1/1_org_zoom.jpg",
-        productName: "Meysu Şeftali 200Ml",
-        productPrice: 8.00,
-        stockCount: 30,
-        multiple: 0
-      },
-              {
-        imageUrl: "https://www.guvendikmarket.com/wp-content/uploads/2023/03/198-1.jpg",
-        productName: "Meysu Karışık 200Ml",
-        productPrice: 8.00,
-        stockCount: 21,
-        multiple: 0
-      },
-                  {
-        imageUrl: "https://cdn.dsmcdn.com/ty522/product/media/images/20220905/15/169418577/559324628/1/1_org_zoom.jpg",
-        productName: "Meysu Karışık 200Ml",
-        productPrice: 5.00,
-        stockCount: 50,
-        multiple: 0
-      },
-      {
-        imageUrl: "https://cdn.akakce.com/z/nigde-gazozu/nigde-gazozu-250-ml-24-adet.jpg",
-        productName: "Niğde Gazozu",
-        productPrice: 15.00,
-        stockCount: 30,
-        multiple: 0
-      },
-          {
-        imageUrl: "https://cdn.akakce.com/z/nigde-gazozu/nigde-gazozu-250-ml-24-adet.jpg",
-        productName: "Niğde Gazozu 24lü",
-        productPrice: 280.00,
-        stockCount: 1,
-        multiple: 1
-      },
-          {
-        imageUrl: "https://cdn.dsmcdn.com/mnresize/500/-/ty1354/product/media/images/prod/QC/20240609/02/3da39f82-7d57-354a-90d1-629ebe7a061a/1_org.jpg",
-        productName: "Aroma Şeftali Adet",
-        productPrice: 15.00,
-        stockCount: 24,
-        multiple: 0
-      },
-      {
-        imageUrl: "https://cdn.dsmcdn.com/mnresize/500/-/ty1354/product/media/images/prod/QC/20240609/02/3da39f82-7d57-354a-90d1-629ebe7a061a/1_org.jpg",
-        productName: "Aroma Şeftali 24lü",
-        productPrice: 280.00,
-        stockCount: 1,
-        multiple: 1
-      },
-      {
-        imageUrl: "https://cdn.dsmcdn.com/ty920/product/media/images/20230530/12/371302271/958158209/1/1_org_zoom.jpg",
-        productName: "Kınık Gazoz Adet",
-        productPrice: 10,
-        stockCount: 384,
-        multiple: 0
-      },
-          {
-        imageUrl: "https://cdn.dsmcdn.com/ty920/product/media/images/20230530/12/371302271/958158209/1/1_org_zoom.jpg",
-        productName: "Kınık Gazoz 24lü ",
-        productPrice: 200,
-        stockCount: 16,
-        multiple: 1
-      },
-      {
-        imageUrl: "https://cdn.akakce.com/z/kahve-dunyasi/kahve-dunyasi-gofrik-33-gr-sutlu.jpg",
-        productName: "Gofrik Adet",
-        productPrice: 20.00,
-        stockCount: 120,
-        multiple: 0
-      },
-      {
-        imageUrl: "https://cdn.akakce.com/z/kahve-dunyasi/kahve-dunyasi-gofrik-33-gr-sutlu.jpg",
-        productName: "Gofrik 24lü",
-        productPrice: 400.00,
-        stockCount: 5,
-        multiple: 1
-      },
-          {
-        imageUrl: "https://www.guvendikmarket.com/wp-content/uploads/2020/08/tadelle-findik-dolgulu-30.png",
-        productName: "Tadelle 30Gr",
-        productPrice: 15.00,
-        stockCount: 26,
-        multiple: 0
-      },
-              {
-        imageUrl: "https://www.guvendikmarket.com/wp-content/uploads/2021/06/karam-gurme.png",
-        productName: "Eti Karam",
-        productPrice: 15.00,
-        stockCount: 18,
-        multiple: 0
-      },
-      {
-        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-qIgjTXj7fFjb17-kAV_89BOa1hWXxjtHdQ&s",
-        productName: "Sarıkız Soda ",
-        productPrice: 7.50,
-        stockCount: 26,
-        multiple: 0
-      },
-      {
-        imageUrl: "https://ardenmarket.com.tr/media/catalog/product/cache/0b154ba1d9ffbc98998b9163ce10b49b/b/e/beypazari-soda-200ml.jpg",
-        productName: "Beypazarı Soda",
-        productPrice: 7.50,
-        stockCount: 24,
-        multiple: 0
-      },
-      {
-        imageUrl: "https://www.kinikmadensuyu.com.tr/assets/img/kurumsal/kurumsal-foto.png",
-        productName: "Kınık Soda",
-        productPrice: 7.50,
-        stockCount: 90,
-        multiple: 0
-      },
-          {
-        imageUrl: "https://onlineapi.cagri.com/api/v1/pub/products/img/47387/1/300",
-        productName: "Kızılay Soda Afyon",
-        productPrice: 7.50,
-        stockCount: 13,
-        multiple: 0
-      },
-          {
-        imageUrl: "https://www.mehmetefendi.com/images/content/jpg/turk-kahvesi-100g1.jpg",
-        productName: "Mehmet Efendi Türk Kahvesi",
-        productPrice: 40.00,
-        stockCount: 7,
-        multiple: 0
-      },
-              {
-        imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/53353_Orta_Kavrulmus_Turk_Kahvesi_100g.jpg",
-        productName: "Kahve Dünyası Türk Kahvesi",
-        productPrice: 35.00,
-        stockCount: 5,
-        multiple: 0
-      },
-      {
-        imageUrl: "https://images.migrosone.com/sanalmarket/product/35038193/35038193-8084a4-1650x1650.jpg",
-        productName: "Blade Deodorant",
-        productPrice: 100.00,
-        stockCount: 1,
-        multiple: 0
-      },
-          {
-        imageUrl: "https://www.watsons.com.tr/medias/sys_master/prd-images/hd8/h72/8900910383134/prd-front-126328_365x385/prd-front-126328-365x385.jpeg",
-        productName: "Blade Deodorant",
-        productPrice: 135.00,
-        stockCount: 5,
-        multiple: 0
-      },
-      {
-        imageUrl: "https://ideacdn.net/idea/el/24/myassets/products/512/gillette-blue-3-tekli-tiras-bicagi.png?revision=1697143329",
-        productName: "Blue 3 Traş Bıçağı",
-        productPrice: 25.00,
-        stockCount: 10,
-        multiple: 0
-      },
-      {
-        imageUrl: "https://productimages.hepsiburada.net/s/46/375-375/10860166873138.jpg",
-        productName: "Flaş Çakmak Gazı",
-        productPrice: 35.00,
-        stockCount: 8,
-        multiple: 0
-      },
-          {
-        imageUrl: "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20240101/02/2eb47205-623a-3516-bd92-b5e94052caa0/1_org_zoom.jpg",
-        productName: "Atc Led Ampul 10w",
-        productPrice: 35.00,
-        stockCount: 4,
-        multiple: 0
-      },
-      {
-        imageUrl: "https://images.migrosone.com/hemen/product/30733252/30733252-a6fb1a-1650x1650.jpg",
-        productName: "Asperox Sarıgüç",
-        productPrice: 70.00,
-        stockCount: 2,
-        multiple: 0
-      },
-      {
-        imageUrl: "https://cdn.akakce.com/z/asperox/asperox-ultra-kirec-pas-sokucu-mavi-guc-1l.jpg",
-        productName: "Asperox Mavi Güç",
-        productPrice: 70.00,
-        stockCount: 2,
-        multiple: 0
-      },
-          {
-        imageUrl: "https://www.drogeria-vmd.com/imagegen.php?autoimage=2001875",
-        productName: "Freshmaker Islak Mendil",
-        productPrice: 25.00,
-        stockCount: 3,
-        multiple: 0
-      },
-              {
-        imageUrl: "https://www.recete.com/sleepy-rose-islak-bebek-mendili-90-adet-bebek-islak-mendilleri-sleepy-4013-40-B.jpg",
-        productName: "Sleepy Rose Islak Mendil",
-        productPrice: 25.00,
-        stockCount: 1,
-        multiple: 0
-      },
-      {
-        imageUrl: "https://www.bebekhouse.com/UserFiles/ProductImages/0/23mslpy21601505/orj/sleepy-easy-clean-yuzey-temizlik-havlusu-100lu-213551.jpeg",
-        productName: "Sleppy 100lü",
-        productPrice: 80.00,
-        stockCount: 12,
-        multiple: 0
-      }
-    ];
+    {
+      imageUrl: "https://productimages.hepsiburada.net/s/532/375-375/110000590281663.jpg",
+      productName: "Meysu Kola",
+      productPrice: 20.00,
+      stockCount: 24,
+      multiple: 0
+    },
+        {
+      imageUrl: "https://productimages.hepsiburada.net/s/532/375-375/110000590281663.jpg",
+      productName: "Meysu Kola 24 lü",
+      productPrice: 450.00,
+      stockCount: 1,
+      multiple: 1
+    },
+    {
+      imageUrl: "https://static.ticimax.cloud/cdn-cgi/image/width=-,quality=85/61728/uploads/urunresimleri/buyuk/meysu-fanta-portakal-tnk-330-ml--4538-.jpg",
+      productName: "Meysu Portakal",
+      productPrice: 20.00,
+      stockCount: 24,
+      multiple: 0
+    },
+        {
+      imageUrl: "https://static.ticimax.cloud/cdn-cgi/image/width=-,quality=85/61728/uploads/urunresimleri/buyuk/meysu-fanta-portakal-tnk-330-ml--4538-.jpg",
+      productName: "Meysu Portakal 24 lü",
+      productPrice: 450.00,
+      stockCount: 1,
+      multiple: 1
+    },
+    {
+      imageUrl: "https://nebilcdn.blob.core.windows.net/sehzadenew/0009356_meysu-gulhane-gazoz-330ml_510.jpg",
+      productName: "Meysu Gazoz",
+      productPrice: 20.00,
+      stockCount: 1,
+      multiple: 0
+    },
+    {
+      imageUrl: "https://nebilcdn.blob.core.windows.net/sehzadenew/0009356_meysu-gulhane-gazoz-330ml_510.jpg",
+      productName: "Meysu Gazoz 24 lü",
+      productPrice: 450.00,
+      stockCount: 1,
+      multiple: 1
+    },
+                   {
+      imageUrl: "https://cdn.dsmcdn.com/mnresize/400/-/ty258/product/media/images/20211129/14/1149174/325199380/1/1_org.jpg",
+      productName: "Fuska 0.5 Su 12Li",
+      productPrice: 40,
+      stockCount: 6,
+      multiple: 1
+    },
+    {
+      imageUrl: "https://www.enginpeynircilik.com/image/cache/hakan/ODPB2609-900x900.PNG",
+      productName: "Tiryaki Çay 500Gr",
+      productPrice: 95.00,
+      stockCount: 14,
+      multiple: 0
+    },
+        {
+      imageUrl: "https://images.deliveryhero.io/image/product-information-management/6266fb776a5c51b0f9f6cd00.jpeg?height=480",
+      productName: "Tiryaki Çay 1Kg",
+      productPrice: 190.00,
+      stockCount: 14,
+      multiple: 0
+    },
+            {
+      imageUrl: "https://productimages.hepsiburada.net/s/52/375-375/11119164227634.jpg",
+      productName: "Doğuş Filiz Çay 1Kg",
+      productPrice: 150.00,
+      stockCount: 14,
+      multiple: 0
+    },
+    {
+      imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2010.0019-1.png",
+      productName: "3 ü 1 arada",
+      productPrice: 5.00,
+      stockCount: 120,
+      multiple: 0
+    },
+    {
+      imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2010.0019-1.png",
+      productName: "3 ü 1 arada 40lı kutu",
+      productPrice: 150.00,
+      stockCount: 3,
+      multiple: 1
+    },
+    {
+      imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2000.0010-1.png",
+      productName: "2 si 1 arada",
+      productPrice: 5.00,
+      stockCount: 720,
+      multiple: 0
+    },
+        {
+      imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/13.300.2000.0010-1.png",
+      productName: "2 si 1 arada 40lı kutu",
+      productPrice: 150.00,
+      stockCount: 18,
+      multiple: 1
+    },
+        {
+      imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/330af_Sicak_Cikolata_Kutu_24lu_.jpg",
+      productName: "Sıcak Çikolata",
+      productPrice: 7.5,
+      stockCount: 120,
+ multiple: 0
+    },
+           {
+      imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/330af_Sicak_Cikolata_Kutu_24lu_.jpg",
+      productName: "Sıcak Çikolata",
+      productPrice: 140,
+      stockCount: 5,
+ multiple: 1
+    },
+        {
+      imageUrl: "https://nebilcdn.blob.core.windows.net/sehzadenew/0001789_meysu-nektar-200ml-seftali_510.jpg",
+      productName: "Meysu Şeftali nektar 200Ml",
+      productPrice: 10.00,
+      stockCount: 24,
+ multiple: 0
+    },
+        {
+      imageUrl: "https://d23ic3f0nw4szy.cloudfront.net/marketpaketi/products/509744/meysu-karisik-meyve-nektari-200-ml-x-6-adet-90e550c75b75521ffcfaab23c6027f24.jpg",
+      productName: "Meysu Karışık nektar 200Ml",
+      productPrice: 10.00,
+      stockCount: 30,
+ multiple: 0
+    },
+            {
+      imageUrl: "https://static.ticimax.cloud/48857/uploads/urunresimleri/1004178-a05e-4.jpg",
+      productName: "Meysu Kayısı nektar 200Ml",
+      productPrice: 10.00,
+      stockCount: 21,
+ multiple: 0
+    },
+                {
+      imageUrl: "https://cdn.dsmcdn.com/ty522/product/media/images/20220905/15/169418577/559324628/1/1_org_zoom.jpg",
+      productName: "Juss Karışık 200Ml",
+      productPrice: 6.00,
+      stockCount: 50,
+ multiple: 0
+    },
+    {
+      imageUrl: "https://cdn.akakce.com/z/nigde-gazozu/nigde-gazozu-250-ml-24-adet.jpg",
+      productName: "Niğde Gazozu",
+      productPrice: 15.00,
+      stockCount: 30,
+ multiple: 0
+    },
+        {
+      imageUrl: "https://cdn.akakce.com/z/nigde-gazozu/nigde-gazozu-250-ml-24-adet.jpg",
+      productName: "Niğde Gazozu 24lü",
+      productPrice: 300.00,
+      stockCount: 1,
+ multiple: 1
+    },
+        {
+      imageUrl: "https://cdn.dsmcdn.com/mnresize/500/-/ty1354/product/media/images/prod/QC/20240609/02/3da39f82-7d57-354a-90d1-629ebe7a061a/1_org.jpg",
+      productName: "Aroma Şeftali Adet",
+      productPrice: 15.00,
+      stockCount: 24,
+ multiple: 0
+    },
+    {
+      imageUrl: "https://cdn.dsmcdn.com/mnresize/500/-/ty1354/product/media/images/prod/QC/20240609/02/3da39f82-7d57-354a-90d1-629ebe7a061a/1_org.jpg",
+      productName: "Aroma Şeftali 24lü",
+      productPrice: 300.00,
+      stockCount: 1,
+ multiple: 1
+    },
+    {
+      imageUrl: "https://cdn.akakce.com/z/kahve-dunyasi/kahve-dunyasi-gofrik-33-gr-sutlu.jpg",
+      productName: "Gofrik Adet",
+      productPrice: 20.00,
+      stockCount: 120,
+ multiple: 0
+    },
+        {
+      imageUrl: "https://www.guvendikmarket.com/wp-content/uploads/2020/08/tadelle-findik-dolgulu-30.png",
+      productName: "Tadelle 30Gr",
+      productPrice: 20.00,
+      stockCount: 26,
+ multiple: 0
+    },
+            {
+      imageUrl: "https://www.etietieti.com/images/Products/canga_124_psb.png",
+      productName: "Eti Canga",
+      productPrice: 16.50,
+      stockCount: 18,
+ multiple: 0
+    },
+    {
+      imageUrl: "https://migrostoptanstr01.blob.core.windows.net/toptanimgs/07010979.jpg",
+      productName: "Eti tutku",
+      productPrice: 15.00,
+      stockCount: 18,
+ multiple: 0
+    },
+    {
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-qIgjTXj7fFjb17-kAV_89BOa1hWXxjtHdQ&s",
+      productName: "Sarıkız Soda ",
+      productPrice: 7.50,
+      stockCount: 26,
+ multiple: 0
+    },
+    {
+      imageUrl: "https://ardenmarket.com.tr/media/catalog/product/cache/0b154ba1d9ffbc98998b9163ce10b49b/b/e/beypazari-soda-200ml.jpg",
+      productName: "Beypazarı Soda",
+      productPrice: 7.50,
+      stockCount: 24,
+ multiple: 0
+    },
+        {
+      imageUrl: "https://www.mehmetefendi.com/images/content/jpg/turk-kahvesi-100g1.jpg",
+      productName: "Mehmet Efendi Türk Kahvesi",
+      productPrice: 45.00,
+      stockCount: 7,
+ multiple: 0
+    },
+            {
+      imageUrl: "https://img-kahvedunyasi.mncdn.com/kahvedunyasi/product/500x500/53353_Orta_Kavrulmus_Turk_Kahvesi_100g.jpg",
+      productName: "Kahve Dünyası Türk Kahvesi",
+      productPrice: 35.00,
+      stockCount: 5,
+ multiple: 0
+    },
+        {
+      imageUrl: "https://www.watsons.com.tr/medias/sys_master/prd-images/hd8/h72/8900910383134/prd-front-126328_365x385/prd-front-126328-365x385.jpeg",
+      productName: "Blade Deodorant",
+      productPrice: 125.00,
+      stockCount: 5,
+ multiple: 0
+    },
+    {
+      imageUrl: "https://ideacdn.net/idea/el/24/myassets/products/512/gillette-blue-3-tekli-tiras-bicagi.png?revision=1697143329",
+      productName: "Blue 3 Traş Bıçağı",
+      productPrice: 20.00,
+      stockCount: 10,
+ multiple: 0
+    },
+    {
+      imageUrl: "https://productimages.hepsiburada.net/s/46/375-375/10860166873138.jpg",
+      productName: "Flaş Çakmak Gazı",
+      productPrice: 35.00,
+      stockCount: 8,
+ multiple: 0
+    },
+        {
+      imageUrl: "https://cdn.dsmcdn.com/ty1114/product/media/images/prod/SPM/PIM/20240101/02/2eb47205-623a-3516-bd92-b5e94052caa0/1_org_zoom.jpg",
+      productName: "Atc Led Ampul 10w",
+      productPrice: 35.00,
+      stockCount: 4,
+ multiple: 0
+    },
+    {
+      imageUrl: "https://images.migrosone.com/hemen/product/30733252/30733252-a6fb1a-1650x1650.jpg",
+      productName: "Asperox Sarıgüç",
+      productPrice: 80.00,
+      stockCount: 2,
+ multiple: 0
+    },
+    {
+      imageUrl: "https://cdn.akakce.com/z/asperox/asperox-ultra-kirec-pas-sokucu-mavi-guc-1l.jpg",
+      productName: "Asperox Mavi Güç",
+      productPrice: 80.00,
+      stockCount: 2,
+ multiple: 0
+    },
+        {
+      imageUrl: "https://www.drogeria-vmd.com/imagegen.php?autoimage=2001875",
+      productName: "Freshmaker Islak Mendil",
+      productPrice: 25.00,
+      stockCount: 3,
+ multiple: 0
+    },
+            {
+      imageUrl: "https://www.recete.com/sleepy-rose-islak-bebek-mendili-90-adet-bebek-islak-mendilleri-sleepy-4013-40-B.jpg",
+      productName: "Sleepy Rose Islak Mendil",
+      productPrice: 25.00,
+      stockCount: 1,
+ multiple: 0
+    },
+    {
+      imageUrl: "https://www.bebekhouse.com/UserFiles/ProductImages/0/23mslpy21601505/orj/sleepy-easy-clean-yuzey-temizlik-havlusu-100lu-213551.jpeg",
+      productName: "Sleppy 100lü",
+      productPrice: 90.00,
+      stockCount: 12,
+ multiple: 0
+    }
+  ];
    let selectedProductsText = '';
     function generateProductCard(product) {
       const productCard = document.createElement("div");
